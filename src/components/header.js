@@ -1,42 +1,38 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from 'react'
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+export default function Header({ title, children }) {
+  const [count, setCount] = React.useState(0);  
+  return (
+    <section className="blurb">
+      <div className="container">
+        <div style={{ width: 500 }} className="window">
+          <div className="title-bar">
+            <div className="title-bar-text">Welcome!</div>
+            <div className="title-bar-controls">
+              <button className="window-button" aria-label="Minimize" />
+              <button className="window-button" aria-label="Maximize" />
+              <button className="window-button" aria-label="Close" />
+            </div>
+          </div>
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+          <div className="window-body">
+            <p style={{ textAlign: "center" }}>I'm Caidc.</p>
+            <div className="field-row" style={{ justifyContent: "center" }}>
+              <button className="window-button" onClick={() => setCount(count + 1)}>+</button>
+              <button className="window-button" onClick={() => setCount(count - 1)}>-</button>
+              <button className="window-button" onClick={() => setCount(0)}>0</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+  //   <header className="header">
+  //   <div className="container">
+  //     <h1>{title}</h1>
+  //     <p className="subtitle">
+  //       {children}
+  //     </p>
+  //   </div>
+  // </header>
 }
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header

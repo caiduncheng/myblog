@@ -1,7 +1,3 @@
-/*! Tania Rascia's website style. Written with plain CSS in one file. Why not? */
-
-/* Global variables */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
@@ -23,6 +19,39 @@
   --transparent-bg: rgba(0, 0, 0, 0.05);
   --light-transparent-bg: rgba(255, 255, 255, 0.1);
   --code-font-family: Menlo, 'Roboto Mono', Courier New, monospace;
+  --border-window-outer: inset -1px -1px var(--window-frame),  
+  inset 1px 1px var(--button-face);
+  --border-window-inner: inset -2px -2px var(--button-shadow),
+  inset 2px 2px var(--button-highlight);
+  --surface: #c0c0c0;  
+  --dialog-blue: #000080;
+  --dialog-blue-light: #1084d0;
+  --window-frame: #0a0a0a;
+  --grouped-element-spacing: 6px;
+  --button-face: #dfdfdf;
+  --button-shadow: #808080;
+  --button-highlight: #ffffff;
+  --border-raised-outer: inset -1px -1px var(--window-frame),
+    inset 1px 1px var(--button-highlight);
+  --border-raised-inner: inset -2px -2px var(--button-shadow),
+    inset 2px 2px var(--button-face);
+}
+
+  
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  src: url("fonts/converted/ms_sans_serif.woff") format("woff");
+  src: url("fonts/converted/ms_sans_serif.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  src: url("fonts/converted/ms_sans_serif_bold.woff") format("woff");
+  src: url("fonts/converted/ms_sans_serif_bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
 }
 
 /* Reset */
@@ -35,10 +64,7 @@
 
 /* Scaffolding */
 
-html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto',
-    Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+html { 
   color: var(--font-color);
   font-weight: 400;
   font-size: 1rem;
@@ -46,6 +72,9 @@ html {
 }
 
 body {
+  font-family: 微软雅黑, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto',
+  Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   background: var(--background);
   margin: 0;
   padding: 0;
@@ -336,27 +365,8 @@ h5 {
 
 .blurb {
   padding: 2rem 0;
-  background: #0004a5;
-  font-family: 'VT323', monospace;
-}
-
-.blurb .container {
-  max-width: 90%;
-  background-color: #bbbbbb;
-  border: 0.875px solid #000000;
-  margin-top: 7px;
-  padding-top: 6.125px;
-  padding-bottom: 7px;
-  border-left-width: 2px;
-  border-right-width: 2px;
-  padding-left: 10.5px;
-  padding-right: 11.5px;
-  box-shadow: -3.5px -7px 0 0 #bbbbbb, 2.5px 6.125px 0 0 #bbbbbb,
-    -3.5px 6.125px 0 0 #bbbbbb, 2.5px -7px 0 0 #bbbbbb;
-  filter: drop-shadow(7px 8px 0 black);
-  margin-bottom: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  background: #00807F;
+  /* font-family: 'VT323', monospace; */
 }
 
 .blurb p {
@@ -418,6 +428,7 @@ h5 {
   .blurb .container {
     display: flex;
     max-width: calc(825px - 4rem);
+    justify-content: center;
   }
 
   .avatar {
@@ -1480,4 +1491,135 @@ kbd {
 ::selection {
   background: #3b5bdb;
   color: white;
+}
+
+/* Header */
+.header {
+  padding: 3rem 0;
+}
+.header a.button {
+  display: block;
+  padding: .85rem 1.5rem;
+  margin-right: .75rem;
+  font-weight: 700;
+  background: var(--light-background);
+  color: var(--dark-font-color);
+  border: 1px solid transparent;
+  font-size: 1.1rem;
+}
+
+.header img {
+  width: 20px;
+  height: 20px;
+}
+
+.header p {
+  color: rgba(0,0,0,.8);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+}
+
+@media screen and (min-width: 800px) {
+  .header {
+    padding: 2rem 0;
+  }
+
+  .header img {
+    height: auto;
+    width: auto;
+    max-width: 200px;    
+  }
+
+  .header p {
+    font-size: 1.2rem;
+  }
+}
+
+/* window */
+
+.window {
+  box-shadow: var(--border-window-outer), var(--border-window-inner);
+  background: var(--surface);
+  padding: 3px;
+}
+
+.window, .title-bar, .window-button {
+  font-family: "Pixelated MS Sans Serif", Arial;
+  -webkit-font-smoothing: none;
+  font-size: 11px;
+}
+
+.window-body {
+  margin: 30px;
+}
+
+.title-bar {
+  background: linear-gradient(
+    90deg,
+    var(--dialog-blue),
+    var(--dialog-blue-light)
+  );
+  padding: 3px 2px 3px 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+}
+
+.field-row > * + * {
+  margin-left: var(--grouped-element-spacing);
+}
+
+.window-button {
+  box-sizing: border-box;
+  border: none;
+  background: var(--surface);
+  box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+  border-radius: 0;
+  min-width: 75px;
+  min-height: 23px;
+  padding: 0 12px;
+}
+
+.title-bar-controls {
+  display: flex;
+}
+
+.title-bar-text {
+  font-weight: bold;
+  color: white;
+  letter-spacing: 0;
+  margin-right: 24px;
+}
+
+.title-bar-controls button[aria-label="Minimize"] {
+  background-image: url("./icon/minimize.svg");
+  background-repeat: no-repeat;
+  background-position: bottom 3px left 4px;
+}
+
+.title-bar-controls button[aria-label="Maximize"] {
+  background-image: url("./icon/maximize.svg");
+  background-repeat: no-repeat;
+  background-position: top 2px left 3px;
+}
+
+.title-bar-controls button[aria-label="Close"] {
+  margin-left: 2px;
+  background-image: url("./icon/close.svg");
+  background-repeat: no-repeat;
+  background-position: top 3px left 4px;
+}
+
+
+.title-bar-controls button {
+  padding: 0;
+  display: block;
+  min-width: 16px;
+  min-height: 14px;
 }
