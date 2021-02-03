@@ -42,7 +42,7 @@ export default function Search({ posts, location, navigate }) {
           results.length > 0 ? (
             <Posts data={results} />
           ) : (
-            <p>Sorry, nothing matched that search.</p>
+            <p>没有搜索到文章</p>
           )
         ) : (     
           <Posts data={posts} showYears />

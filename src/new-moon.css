@@ -4,6 +4,8 @@
   --code-font-family: Menlo, 'Roboto Mono', Courier New, monospace;
   --code-font-color: #b3b9c5;
   --code-background-color: #353535;
+  --orange-color: #ff502c;
+  --light-orange-background: #fff5f5;
   --string: #92d192;
   --variable: #f2777a;
   --property: #abb2bf;
@@ -77,9 +79,12 @@ pre[class*='language-'] {
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
-  padding: 5px;
+  /* padding: 5px; */
+  padding: .2rem .5rem;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 0.35rem;
+  background-color: var(--light-orange-background);
+  color: var(--orange-color) !important;
 }
 
 pre.language-text {
@@ -90,7 +95,7 @@ pre.language-text {
 }
 
 code.language-text {
-  background: var(--light-background) !important;
+  /* background: var(--light-background) !important; */
   color: var(--dark-font-color) !important;
   box-shadow: none;
 }

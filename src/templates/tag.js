@@ -4,33 +4,33 @@ import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import Posts from '../components/Posts'
-import SEO from '../components/SEO'
+// import SEO from '../components/SEO'
 
-import { getSimplifiedPosts } from '../utils/helpers'
-import config from '../utils/config'
+import { getSimplifiedPosts } from '../util'
+import config from '../util/config'
 
 export default function TagTemplate({ data, pageContext }) {
   const { tag } = pageContext
   const { totalCount } = data.allMarkdownRemark
   const posts = data.allMarkdownRemark.edges
-  const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts])
-  const message = totalCount === 1 ? ' post found.' : ' posts found.'
+  const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts])  
 
   return (
     <Layout>
       <Helmet title={`Posts tagged: ${tag} | ${config.siteTitle}`} />
-      <SEO />
+      {/* <SEO /> */}
       <header>
         <div className="container">
-          <h1>Posts tagged: {tag}</h1>
+          <h1>标签包含<span className="tag-name">{tag}</span>的文章</h1>
           <p className="subtitle">
+            共找到
             <span className="count">{totalCount}</span>
-            {message}
+            篇
           </p>
         </div>
       </header>
       <section className="container">
-        <Posts data={simplifiedPosts} />
+        <Posts data={simplifiedPosts}/>
       </section>
     </Layout>
   )
@@ -50,7 +50,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "YYYY-MM-DD ")
             title
             tags            
           }

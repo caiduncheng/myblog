@@ -1,12 +1,11 @@
 ---
 date: '2020-12-01'
 title: 'Vue源码学习（二）：找到Vue代码'
-tags: ['Vue', 'JavaScript']
+tags: ['vue', 'javascript']
 template: 'post'
 thumbnail: vue.png
 description: ''
 ---
-
 上篇文章我们找到了入口文件，该文件的`Vue`是在别的文件定义的，在开头有`import Vue from './runtime/index'`，我们来看下这个文件
 
 ```javascript

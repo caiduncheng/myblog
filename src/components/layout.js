@@ -6,7 +6,6 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Nav from './Nav'
 
 // import "../98.css";

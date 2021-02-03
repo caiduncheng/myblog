@@ -1,13 +1,11 @@
 ---
 date: '2020-12-01'
 title: 'Vue源码学习（四）：$mount'
-tags: ['Vue', 'JavaScript']
+tags: ['vue', 'javascript']
 template: 'post'
 thumbnail: vue.png
 description: ''
 ---
-
-# Vue源码学习（四）：实例挂载的实现
 
 上一节介绍了`init`方法，其中调用了`vm.$mount`，那这个`$mount`的定义在`platforms/web/entry-runtime-with-compiler.js`
 

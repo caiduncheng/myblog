@@ -1,15 +1,13 @@
 import React, { useMemo } from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import Header from '../components/Header'
-import github from '../../content/images/github.png'
+import Blurb from '../components/Blurb'
+import Recommendations from '../components/Recommendation'
 import { getSimplifiedPosts } from '../util'
-import Posts from '../components/Posts'
 
-const Index = ({ data }) => {
-  const latest = data.latest.edges  
-  const simplifiedLatest = useMemo(() => getSimplifiedPosts(latest), [latest])
-  console.log(simplifiedLatest)
+const Index = ({ data }) => {  
+  const recommended = data.recommended.edges    
+  const simplifiedRecommended = useMemo(() => getSimplifiedPosts(recommended, {thumbnails: true}), [recommended])    
   
   const Section = ({ title, children, button, ...props }) => (
     <section {...props}>
@@ -27,46 +25,13 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <Header title="我是Caidc.">
-        <p>一名咸鱼前端，切图仔</p>
-        <p className="flex">
-          <a className="button">
-            My Github profile
-            <img src={github} style={
-              {
-                display: 'inline-block', 
-                margin: '0px 0px 0px 0.5rem',
-                maxWidth: '2.5rem',
-                maxHeight: '2.5rem'
-              }
-            }/>
-          </a>
-        </p>
-      </Header>
+      <Blurb title="我是Caidc." />      
       <div className="container index">
-        <Section title="最新发布" button>
-          <Posts data={simplifiedLatest}/>
+        <Section title="推荐阅读" button>
+          <Recommendations data={simplifiedRecommended}/>
         </Section>
       </div>
       </Layout>
-      // <div>
-      //   <h1>文章列表</h1>
-      //   <h4>共{data.allMarkdownRemark.totalCount} 篇文章</h4>
-      //   {data.allMarkdownRemark.edges.map(({ node }) => (
-      //     <div key={node.id}>
-      //       <Link to={node.fields.slug}>
-      //       <h3>
-      //         {node.frontmatter.title}{" "}
-      //         <span>
-      //           — {node.frontmatter.date}
-      //         </span>
-      //       </h3>
-
-      //       <p>{node.excerpt}</p>
-      //       </Link>
-      //     </div>
-      //   ))}
-      // </div>
   )
 }
 
@@ -74,19 +39,30 @@ export default Index
 
 export const query = graphql`
   query {
-    latest: allMarkdownRemark {      
+    recommended: allMarkdownRemark(
+      limit: 5      
+      filter: { frontmatter: { categories: { in: "FrontPage" } } }
+    ) {      
       totalCount
       edges {
         node {
           id
           frontmatter {
             title
-            date(formatString: "YYYY-MM-DD ")            
+            description
+            tags
+            date(formatString: "YYYY-MM-DD ")        
+            thumbnail {
+              childImageSharp {
+                fixed(width: 100, height: 100) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }   
           }
           fields {
             slug
-          }
-          excerpt
+          }          
         }
       }
     }

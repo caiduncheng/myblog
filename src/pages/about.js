@@ -1,15 +1,12 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
+import Header from '../components/Header'
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 
 const About = ({data}) => (
   <Layout>
-    <h1>About {data.site.siteMetadata.title}</h1> {/* highlight-line */}
-    <p>
-      {data.site.siteMetadata.description}
-    </p>
-    <Link to="/">Go back to the homepage</Link>
+    <Header title="关于">没什么好说的，有空再写<span role="img" aria-label="emoji">😂</span></Header>
   </Layout>
 )
 

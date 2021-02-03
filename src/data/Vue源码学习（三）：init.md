@@ -1,13 +1,11 @@
 ---
 date: '2020-12-01'
 title: 'Vue源码学习（三）：init'
-tags: ['Vue', 'JavaScript']
+tags: ['vue', 'javascript']
 template: 'post'
 thumbnail: vue.png
 description: ''
 ---
-
-# Vue源码学习（三）：init
 
 在这篇文章中，我将介绍：
 

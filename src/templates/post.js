@@ -11,7 +11,7 @@ import { slugify } from '../util'
 
 export default function PostTemplate({ data, pageContext }) {
   const post = data.markdownRemark
-  const { previous, next } = pageContext
+  // const { previous, next } = pageContext
   const { tags, thumbnail, title, date, description } = post.frontmatter
 
   // const commentBox = React.createRef()

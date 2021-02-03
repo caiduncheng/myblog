@@ -1,13 +1,11 @@
 ---
 date: '2020-12-01'
 title: 'Vue源码学习（一）：找到入口'
-tags: ['Vue', 'JavaScript']
+tags: ['vue', 'javascript']
 template: 'post'
 thumbnail: vue.png
 description: ''
 ---
-
-# Vue源码学习（一）：找到入口
 
 ## 获取源码
 
