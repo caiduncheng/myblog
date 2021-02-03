@@ -144,7 +144,7 @@ export default Vue
 
 也就是说`Vue`经过了两次包装，第一次包装发生在`initGlobalApi`第二次包装在`./runtime/index`,经过两次包装后，Vue构造函数的`options`属性就生成了，用一张图来表示吧
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1609835532042-69bc3f85-4618-47c0-9783-5616d0ee8fd5.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/vueoptions.png" />
 
 我们回来继续找我们的`Vue`,在`core/index`发现`Vue`又是从`./instance/index`导入进来的
 

@@ -161,7 +161,7 @@ npm run start
 
 之后服务会在`localhost:3000`运行，浏览器会自动弹出并运行你的应用
 
-![image.png](https://upload-images.jianshu.io/upload_images/22390395-ab93d2e59d36b722.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<img src="https://upload-images.jianshu.io/upload_images/22390395-ab93d2e59d36b722.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
 
 看下你的项目目录结构，你可以看到`/public`，`/src`，`node_modules`,`.gitignore`,`README.md`和`package.json`
 

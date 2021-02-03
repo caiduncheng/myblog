@@ -77,7 +77,7 @@ module.exports = {
                 frontmatter {
                   title
                   tags                
-                  date(formatString: "MMMM DD, YYYY")
+                  date(formatString: "YYYY-MM-DD")
                 }
                 fields {
                   slug

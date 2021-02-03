@@ -16,7 +16,7 @@ vue create typescript-vue
 
 然后选择`manually select features`，选择如下配置
 
-![](https://caidc.oss-cn-beijing.aliyuncs.com/vue-typescript-app-configuration%20%281%29.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/vue-typescript-app-configuration%20%281%29.png" />
 
 等待配置完成，然后启动项目
 
@@ -314,9 +314,9 @@ resetCount() {
 
 这里借助以下谷歌浏览器的插件Vue开发者工具来看一下
 
-![](https://caidc.oss-cn-beijing.aliyuncs.com/emit2.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/emit2.png" />
 
-![](https://caidc.oss-cn-beijing.aliyuncs.com/emit.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/emit.png" />
 
 ### 生命周期函数
 

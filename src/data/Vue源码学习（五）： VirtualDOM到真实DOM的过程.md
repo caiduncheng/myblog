@@ -11,9 +11,7 @@ description: ''
 
 在开始之前先介绍下`Virtual DOM`，我们都知道浏览器的DOM元素是很庞大的，拥有许多属性，如果频繁更新真实的DOM元素会非常消耗性能，所以引入了`Virtual DOM`的概念。而`Virual DOM`就是用原生的JS对象去描述一个DOM节点。在Vue中，Virual DOM就是用`VNode`这样一个类来描述的。一个`VNode`大概是这个样子的:
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610009535841-10574e73-c70f-42b7-9774-3719423c4c6e.png)
-
-
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom.png" />
 
 从VirtualDOM到真实DOM的过程会涉及到三个函数，`render`,`createElement`,`_update`
 
@@ -97,7 +95,7 @@ new Vue({
 
 运行后
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610006163713-2aa9e3b4-a10e-4480-9439-0582703a1574.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom2.png" />
 
 可以看到这里是直接替换了我们在`index.html`中写的`<div id="#app"></div>`，所以这就是为什么不能挂载到`<body>`或者`<html>`的原因
 
@@ -231,9 +229,9 @@ if (isTextNode(c[0]) && isTextNode(last)) {
 
 总之，上面的两个`normalize`的目的都是**为了得到一维数组的`VNode`**，我们的例子中，在经过`normalize`后，我们的`children`变成了
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610552242491-44c7bbc6-6f9c-4a63-8633-844cf9da20c5.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom3.png" />
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610552461812-dee1c00e-3746-4284-8c5b-5f60e939c440.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom4.png" />
 
 我们回到`_createElement`函数中，首先定义了`vnode`，然后判断标签是不是字符串（我们这里是'div'，符合)，然后再判断是不是保留标签（比如`<html>`,`<div>`,`<p>`)，都符合就直接实例化`VNode`，把上面的`children`作为参数传了进去
 
@@ -274,7 +272,7 @@ if (Array.isArray(vnode)) {
 
 调试结果：
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610553307426-624ac95f-abe0-4661-b51f-76ec4980a68a.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom5.png" />
 
 回到我们的`updateComponent`方法，`vm._update`的第一个参数就是我们上面调用完后返回的`vnode`
 
@@ -352,7 +350,7 @@ const hooks = ['create', 'activate', 'update', 'remove', 'destroy']
 
 `cbs `最后是这个样子的：
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610556639408-7fd21663-166a-4bed-bcb5-a84a29bdd4ab.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom6.png" />
 
 当然这个不重要，有个大概印象就行，然后下面就是定义了一堆辅助函数，最后return了patch函数
 
@@ -524,7 +522,7 @@ function createChildren (vnode, children, insertedVnodeQueue) {
   }
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610611369173-3d875059-50a5-4643-ad3c-12873b0b011d.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom7.png" />
 
 然后递归调用之后就又会调用这个`createChildren`就这样一层层地传入(我们的例子只会递归一次，因为只有一层深度的子节点），然后最终在`createElm`会调用`insert`方法把DOM插入到父节点中。因为是递归调用，子元素会优先调用 `insert`，所以整个 `vnode` 树节点的插入顺序是先子后父。直到最外层的节点插入到`<body>`中。来看一下 `insert` 方法，它的定义在 `src/core/vdom/patch.js` 上。
 
@@ -568,7 +566,7 @@ else if (isTrue(vnode.isComment)) {
 
 `insert`结束后，我们的页面就出现了`Hello Vue`
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610594987712-d1ea2754-ea30-40f9-9b88-43a7654fa3a9.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom8.png" />
 
 然后最后`patch`方法返回了，这个`vnode.elm`就是已经插入了子节点的`<div id="vue">`
 
@@ -580,4 +578,4 @@ return vnode.elm
 
 首先就是我们给`new Vue`传入了render函数，这个render函数在`vm._render`里面调用，render函数调用`createElement`，在`createElement`根据传入的参数创建`VNode`，并返回，返回的这个vnode其实就是`vm._update`的第一个参数，然后调用`vm._update`，里面又调用了`patch`，`patch`调用了`createElm`，在`createChildren`中递归调用`createElm`完成DOM的插入，然后先子后父，最终插入到body当中完成渲染
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610610680789-54871bf5-e3ec-4923-9431-c9811a081908.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/virtualdom9.png" />

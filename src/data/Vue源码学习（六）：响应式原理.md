@@ -7,6 +7,9 @@ thumbnail: vue.png
 description: '前面讲了数据的渲染，但是都没介绍数据是如何变化的。数据驱动除了渲染DOM以外，还要在数据变化时触发DOM的更新。'
 categories: FrontPage
 ---
+
+
+
 前面讲了数据的渲染，但是都没介绍数据是如何变化的。数据驱动除了渲染DOM以外，还要在数据变化时触发DOM的更新。
 
 看下下面这个例子
@@ -233,7 +236,7 @@ export function defineReactive (
 ...
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610697994368-6100411a-a1c0-4d9d-acb0-536343eb11de.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/reactive.png" />
 
 实例化一个`Dep`
 
@@ -406,11 +409,11 @@ addSub (sub: Watcher) {
 }
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610697404963-fd6094aa-0129-4ae0-bc7d-fb61056d5718.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/reactive2.png"/>
 
 这边做了个图来理解下这个过程
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1610697224291-6e2683ef-cd7a-4590-8406-068d6e448f02.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/reactive3.png" />
 
 所以其实依赖收集实际上就是对`Watcher`的收集，依赖收集的目的是为了当这些数据发生变化，触发setter的时候，能知道应该去通知哪些订阅者去做相应的处理
 

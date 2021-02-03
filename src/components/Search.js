@@ -45,7 +45,7 @@ export default function Search({ posts, location, navigate }) {
             <p>没有搜索到文章</p>
           )
         ) : (     
-          <Posts data={posts} showYears />
+          <Posts data={posts} showYears/>
         )}
       </section>
     </>

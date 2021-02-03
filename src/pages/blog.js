@@ -19,7 +19,7 @@ export default function BlogIndex({ data, ...props }) {
       {/* <SEO customDescription="Articles, tutorials, snippets, musings, and everything else." /> */}
       <header>
         <div className="container">
-          <h1>博客</h1>
+          <h1>文章</h1>
           <p className="subtitle">
             随便看看，看心情写
           </p>

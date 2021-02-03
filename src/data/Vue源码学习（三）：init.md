@@ -157,7 +157,7 @@ export function stateMixin (Vue: Class<Component>) {
 
 那简单地说，这五个mixin就是往Vue的原型上去挂载了一些函数，变量：
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/561995/1609767132663-57a4118c-975a-43dc-a60b-42d07ddc5511.png)
+<img src="https://caidc.oss-cn-beijing.aliyuncs.com/rendermixin.png" />
 
 ## 了解init的过程
 
