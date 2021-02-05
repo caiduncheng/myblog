@@ -2,7 +2,7 @@ import React from "react"
 // import { Link } from "gatsby"
 import Header from '../components/Header'
 import { graphql } from 'gatsby'
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 const About = ({data}) => (
   <Layout>

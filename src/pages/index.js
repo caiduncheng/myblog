@@ -1,6 +1,6 @@
 import React, { useMemo } from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Blurb from '../components/Blurb'
 import Recommendations from '../components/Recommendation'
 import { getSimplifiedPosts } from '../util'
