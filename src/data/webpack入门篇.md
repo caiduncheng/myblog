@@ -1,7 +1,7 @@
 ---
 title: 'webpack入门'
 template: 'post'
-tags: ['Webpack']
+tags: ['webpack']
 date: '2020-05-31'
 thumbnail: 'webpack.png'
 categories: 'FrontPage'

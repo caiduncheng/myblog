@@ -87,13 +87,13 @@ module.exports = {
             }
           }
         `,
-        ref: 'id',
+        ref: 'slug',
         index: ['title', 'tags'],
         store: ['id', 'slug', 'title', 'tags', 'date'],
         normalizer: ({ data }) =>
           data.allMarkdownRemark.nodes.map((node) => ({            
             id: node.id,
-            slug: `/${node.frontmatter.slug}`,
+            slug: `${node.fields.slug}`,
             title: node.frontmatter.title,
             body: node.rawMarkdownBody,
             tags: node.frontmatter.tags,            

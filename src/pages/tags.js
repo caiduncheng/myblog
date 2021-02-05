@@ -51,7 +51,7 @@ export default function Tags ({data})  {
               categories.map(category => (
                 <Link to={`/tags/${category.tag}`} className="image-link" key={category.name}> 
                   <div className="image-wrapper">
-                    <img src={category.thumbnail}/>
+                    <img src={category.thumbnail} alt="thumbnail"/>
                   </div>
                   <span>{category.name}</span>
                 </Link>              

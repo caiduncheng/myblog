@@ -17,7 +17,7 @@ categories: FrontPage
 ```javascript
 <div id="app">
     {{ msg }}
-	<button @click="change">click</button>
+	<button @click="changeMsg">click</button>
 </div>
 
 new Vue({
@@ -33,7 +33,7 @@ new Vue({
 })
 ```
 
-当我们点击button修改`this.message`的手，我们发现视图上的`Hello World`变成了`Hello`了，我们接下来分析下Vue是怎么在我们修改数据后操作了DOM。
+当我们点击button修改`this.message`的时候，我们发现视图上的`Hello World`变成了`Hello`了，我们接下来分析下Vue是怎么在我们修改数据后操作了DOM。
 
 ## Object.defineProperty
 

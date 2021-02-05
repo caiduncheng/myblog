@@ -17,13 +17,13 @@ export default function Search({ posts, location, navigate }) {
     }
   `)
 
-  console.log(localSearchPages)
-
   const results = useFlexSearch(
     query,
     localSearchPages.index,
     localSearchPages.store
   )
+
+  console.log(results)
 
   return (
     <>

@@ -10,20 +10,24 @@ const { createFilePath }  = require(`gatsby-source-filesystem`)
 const path = require('path')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  // const fileNode = getNode(node.parent)
-  // const parsedFilePath = path.parse(fileNode.relativePath)
-  // if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
-  //   slug = `/${node.frontmatter.slug}/`
-  // } else {
-  //   slug = `/${parsedFilePath.dir}/`
-  // }
-
-  // createNodeField({
-  //   name: 'slug',
-  //   node,
-  //   value: slug,
-  // })
   const { createNodeField } = actions
+  // let slug
+  // if (node.internal.type === 'MarkdownRemark') {
+  //   const fileNode = getNode(node.parent)
+  //   const parsedFilePath = path.parse(fileNode.relativePath)
+
+  //   if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
+  //     slug = `/${node.frontmatter.slug}/`
+  //   } else {
+  //     slug = `/${parsedFilePath.dir}/`
+  //   }
+
+  //   createNodeField({
+  //     name: 'slug',
+  //     node,
+  //     value: slug,
+  //   })
+  // }
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode, basePath: `data` })    
     createNodeField({
@@ -42,7 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             id
@@ -82,6 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   
   const tags = Array.from(tagSet)
+  console.log("tags")
   console.log(tags)
   tags.forEach(tag => {
     createPage({
