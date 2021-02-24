@@ -71,7 +71,7 @@ module.exports = {
         engineOptions: 'speed',
         query: `
           {
-            allMarkdownRemark {
+            allMarkdownRemark(filter: {frontmatter: {template: {eq: "post"}}}) {
               nodes {
                 id
                 frontmatter {

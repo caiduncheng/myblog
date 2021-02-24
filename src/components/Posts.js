@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { Link } from 'gatsby' 
 
-const Cell = ({ node }) => {  
+const Cell = ({ node }) => {    
   const date = new Date(node.date)
   const oneMonthAgo = new Date()
   oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)

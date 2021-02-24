@@ -3,7 +3,7 @@ title: '用TypeScript写Vue项目'
 template: 'post'
 tags: ['typescript', 'vue']
 date: '2020-10-05'
-thumbnail: 'typescript.png'
+thumbnail: 'vue.png'
 ---
 
 ### 开始

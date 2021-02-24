@@ -1,33 +1,8 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
-
 const { createFilePath }  = require(`gatsby-source-filesystem`)
 const path = require('path')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
-  // let slug
-  // if (node.internal.type === 'MarkdownRemark') {
-  //   const fileNode = getNode(node.parent)
-  //   const parsedFilePath = path.parse(fileNode.relativePath)
-
-  //   if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
-  //     slug = `/${node.frontmatter.slug}/`
-  //   } else {
-  //     slug = `/${parsedFilePath.dir}/`
-  //   }
-
-  //   createNodeField({
-  //     name: 'slug',
-  //     node,
-  //     value: slug,
-  //   })
-  // }
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode, basePath: `data` })    
     createNodeField({
@@ -42,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const tagPage = path.resolve('./src/templates/tag.js')
   const postPage = path.resolve('./src/templates/post.js')
+  const resumePage = path.resolve('./src/templates/resume.js')
 
   const { createPage } = actions
   const result = await graphql(`
@@ -66,6 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const all = result.data.allMarkdownRemark.edges
   const post = all.filter(post => post.node.frontmatter.template === 'post')  
+  const resume = all.filter(post => post.node.frontmatter.template === 'resume')
   const tagSet = new Set()
 
   post.forEach((post, i) => {
@@ -86,8 +63,6 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   
   const tags = Array.from(tagSet)
-  console.log("tags")
-  console.log(tags)
   tags.forEach(tag => {
     createPage({
       path: `/tags/${slugify(tag)}`,
@@ -97,6 +72,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     })
   })
+  
 }
 
 function slugify(str) {

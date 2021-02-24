@@ -23,8 +23,6 @@ export default function Search({ posts, location, navigate }) {
     localSearchPages.store
   )
 
-  console.log(results)
-
   return (
     <>
       <input

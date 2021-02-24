@@ -36,7 +36,7 @@ export default function BlogIndex({ data, ...props }) {
 
 export const pageQuery = graphql`
   query BlogQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(filter: {frontmatter: {template: {eq: "post"}}}) {
       edges {
         node {
           id
