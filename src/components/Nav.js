@@ -19,7 +19,7 @@ export default function Nav() {
             <Link to="/blog">文章</Link>
             <Link to="/tags">分类</Link>
             <Link to="/about">关于</Link>
-            <Link to="/resume">简历</Link>
+            {/* <Link to="/resume">简历</Link> */}
             <button
               id="dark-mode-button"       
               onClick={(event) => {
